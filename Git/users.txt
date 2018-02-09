@@ -1,0 +1,1 @@
+sgalopin = Sylvain Galopin <Sylvain.Galopin@ign.fr>
