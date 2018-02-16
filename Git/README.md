@@ -55,6 +55,24 @@ git push --tags origin master
 - git merge --no-ff -m "Merge version x.x.x" Release_Vx.x.x
 - git push origin develop
 ```
+## Supprimer une branche (locale ou distante)
+### Locale
+```git
+git branch -d the_local_branch
+```
+### Distante
+```git
+# Ancienne syntaxe
+git push origin :the_remote_branch
+# Nouvelle syntaxe
+git push origin --delete the_remote_branch
+```
+### Mise à jour des branches distantes en local
+```git
+git fetch -p
+```
+Sources:
+- [Git: Delete a branch (local or remote)](https://makandracards.com/makandra/621-git-delete-a-branch-local-or-remote)
 
 ## Renommer une branche sur GitHub.com
 Déprotéger la branche old-name pour permettre sa suppression lors du push.
