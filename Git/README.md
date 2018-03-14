@@ -123,9 +123,9 @@ Protéger la branche si nécessaire.
 
 ###### Migrer un dépôt sous GitLab vers un dépôt GitHub avec LFS
 - [Exemple de fichier de migration](gitlabtogithub.txt)
-- [Duplicating a repository](https://help.github.com/articles/duplicating-a-repository/#mirroring-a-repository-in-another-location)
-- [Git Large File Storage](https://git-lfs.github.com/)
-- [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+- [Duplicating a repository](https://help.github.com/articles/duplicating-a-repository)
+- [Git Large File Storage](https://git-lfs.github.com)
+- [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner)
 
 ###### Partager un répertoire cloné avec vagrant et virtualbox
 Sources:
