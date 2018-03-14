@@ -121,6 +121,12 @@ Protéger la branche si nécessaire.
 - [Exemple de fichier de migration](svntogit.txt)
 - [Exemple de fichier utilisateurs](users.txt)
 
+###### Migrer un dépôt sous GitLab vers un dépôt GitHub avec LFS
+- [Exemple de fichier de migration](gitlabtogithub.txt)
+- [Duplicating a repository](https://help.github.com/articles/duplicating-a-repository/#mirroring-a-repository-in-another-location)
+- [Git Large File Storage](https://git-lfs.github.com/)
+- [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+
 ###### Partager un répertoire cloné avec vagrant et virtualbox
 Sources:
 - [virtualbox shared folder git restriction](https://www.google.fr/search?hl=fr&biw=1138&bih=811&ei=yIWOWrKYCsOAUbWzj8AM&q=virtualbox+shared+folder+git+restriction&oq=virtualbox+shared+folder+git+restriction&gs_l=psy-ab.3..33i21k1.64680.71284.0.72012.16.16.0.0.0.0.96.1262.16.16.0....0...1.1.64.psy-ab..0.15.1168...0j35i39k1j0i67k1j0i20i263k1j0i203k1j0i22i30k1j33i22i29i30k1j33i160k1.0.1pzMtC5UNGA)
