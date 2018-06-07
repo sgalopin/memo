@@ -6,6 +6,8 @@
 ```shell
 ssh-keygen -t rsa -C "your.email@example.com" -b 4096
 ```
+Sources:
+- [Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 
 ###### ~/.ssh/config exemple:
 ```config
@@ -25,6 +27,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 Source:
 - [SSH : Authentification par clé](https://doc.fedora-fr.org/wiki/SSH_:_Authentification_par_cl%C3%A9)
+- [ssh-add add all private keys in .ssh directory](https://unix.stackexchange.com/questions/322124/ssh-add-add-all-private-keys-in-ssh-directory)
 
 ###### ~/.ssh/known_hosts exemple:
 ```shell
@@ -40,13 +43,14 @@ Source:
 
 ```shell
 git config -l
-git config user.name "myname"
-git config user.email "myemail"
+git config user.name "Sylvain Galopin"
+git config user.email "sylvain.galopin@ign.fr"
+git config user.name "sgalopin"
+git config user.email "sg@griffedartistes.com"
 ```
 
 Sources:
-- [Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-- [ssh-add add all private keys in .ssh directory](https://unix.stackexchange.com/questions/322124/ssh-add-add-all-private-keys-in-ssh-directory)
+
 - [Set git email address on a per repository basis](https://dereenigne.org/git/set-git-email-address-on-a-per-repository-basis/)
 
 ###### Rattraper une erreur de config:
@@ -57,6 +61,7 @@ git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "sgalopin" ]; th
 git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "Sylvain Galopin" ]; then GIT_COMMITTER_NAME="sgalopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "sgalopin" ]; then GIT_COMMITTER_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"; git commit-tree "$@";' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_COMMIT" = "41e3f4675a9987b8f8c2a7a172ba4d87c7ef043a" ]; then GIT_AUTHOR_DATE="Tue Jun 5 12:10:15 2018 +0200"; GIT_COMMITTER_DATE="Tue Jun 5 12:10:15 2018 +0200"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 ```
 
 Sources:
