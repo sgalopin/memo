@@ -49,6 +49,30 @@ Sources:
 - [ssh-add add all private keys in .ssh directory](https://unix.stackexchange.com/questions/322124/ssh-add-add-all-private-keys-in-ssh-directory)
 - [Set git email address on a per repository basis](https://dereenigne.org/git/set-git-email-address-on-a-per-repository-basis/)
 
+###### Rattraper une erreur de config:
+
+```shell
+git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "Sylvain Galopin" ]; then GIT_AUTHOR_NAME="sgalopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "sgalopin" ]; then GIT_AUTHOR_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "Sylvain Galopin" ]; then GIT_COMMITTER_NAME="sgalopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "sgalopin" ]; then GIT_COMMITTER_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"; git commit-tree "$@";' HEAD
+```
+
+Sources:
+- [How can I change the author name / email of a commit?](https://www.git-tower.com/learn/git/faq/change-author-name-email)
+- [Doc git-filter-branch](https://git-scm.com/docs/git-filter-branch)
+- [Working with dates in Git](https://alexpeattie.com/blog/working-with-dates-in-git)
+
+###### Consulter l'historique détaillé:
+
+```shell
+git log --format=fuller
+```
+
+Sources:
+- [Working with dates in Git](https://alexpeattie.com/blog/working-with-dates-in-git)
+
 ###### Vérifier si une branche existe:
 ```shell
 git rev-parse --verify <branch-name>
