@@ -45,7 +45,7 @@ Source:
 git config -l
 git config user.name "Sylvain Galopin"
 git config user.email "sylvain.galopin@ign.fr"
-git config user.name "sgalopin"
+git config user.name "Sylvain Galopin"
 git config user.email "sg@griffedartistes.com"
 ```
 
@@ -56,10 +56,10 @@ Sources:
 ###### Rattraper une erreur de config:
 
 ```shell
-git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "Sylvain Galopin" ]; then GIT_AUTHOR_NAME="sgalopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
-git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "sgalopin" ]; then GIT_AUTHOR_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
-git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "Sylvain Galopin" ]; then GIT_COMMITTER_NAME="sgalopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
-git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "sgalopin" ]; then GIT_COMMITTER_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "sgalopin" ]; then GIT_AUTHOR_NAME="Sylvain Galopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "Sylvain Galopin" ]; then GIT_AUTHOR_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "sgalopin" ]; then GIT_COMMITTER_NAME="Sylvain Galopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
+git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "Sylvain Galopin" ]; then GIT_COMMITTER_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"; git commit-tree "$@";' HEAD
 git filter-branch -f --commit-filter 'if [ "$GIT_COMMIT" = "41e3f4675a9987b8f8c2a7a172ba4d87c7ef043a" ]; then GIT_AUTHOR_DATE="Tue Jun 5 12:10:15 2018 +0200"; GIT_COMMITTER_DATE="Tue Jun 5 12:10:15 2018 +0200"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 ```
@@ -77,6 +77,15 @@ git log --format=fuller
 
 Sources:
 - [Working with dates in Git](https://alexpeattie.com/blog/working-with-dates-in-git)
+
+
+###### Nettoyer son dépôt git:
+
+git filter-branch -f --tree-filter "rm -rfd doc/img/home.png" --prune-empty -- --all
+
+Sources:
+- [Nettoyer son dépôt git, like a boss](http://www.nicoespeon.com/fr/2014/04/nettoyer-son-depot-git-like-a-boss/)
+
 
 ###### Vérifier si une branche existe:
 ```shell
