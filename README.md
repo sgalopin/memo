@@ -1,5 +1,5 @@
-# Mémentos
+# My
 
-- [Mémo Git](./Git/README.md)
-- [Mémo Linux](./Linux/README.md)
-- [Mémo Puppet](./Puppet/README.md)
+<p align="center">
+  <img src="memo.png">
+</p>
