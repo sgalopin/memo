@@ -1,0 +1,60 @@
+Vagrant.configure("2") do |config|
+	puts "Setting of the IGN proxy configuration."
+
+	config.vm.box_check_update = false
+	if Vagrant.has_plugin?("vagrant-proxyconf")
+        #config.proxy.http     = ENV['HTTP_PROXY']
+        #config.proxy.https    = ENV['HTTPS_PROXY']
+        #config.proxy.no_proxy = ENV['NO_PROXY']
+        #config.proxy.enabled  = ENV.fetch('HTTP_PROXY', false)
+    end
+	
+	# tester présence du proxy
+	if Vagrant.has_plugin?("vagrant-proxyconf") 
+		config.proxy.http     = "http://192.168.4.22:3128/"
+		config.proxy.https    = "http://192.168.4.22:3128/"
+		config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+		config.proxy.enabled  = true
+	end
+	# si proxy non présent
+	config.proxy.http     = ""
+	config.proxy.https    = ""
+	config.proxy.enabled  = false
+	#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+	#!!!!!!!!! Effacer également dans la console les variables http_proxy= && https_proxy= !!!!!!!!!#
+	#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+	
+
+#  config.vm.provision "add-gradle-properties", type: "shell", privileged: true, inline: <<-SHELL
+#CONTENT="systemProp.http.proxyHost=192.168.4.22
+#systemProp.http.proxyPort=3128
+#systemProp.https.proxyHost=192.168.4.22
+#systemProp.https.proxyPort=3128"
+#     mkdir -p ~/.gradle
+#     touch ~/.gradle/gradle.properties && echo "$CONTENT" >> ~/.gradle/gradle.properties
+#  SHELL
+	 
+	config.vm.provision "add-apt-sources", type: "shell", privileged: true, inline: <<-SHELL
+		echo "Setting of the IGN mirror configuration."
+		OS=`cat /etc/*-release | grep ^ID= | cut -d '=' -f 2`
+		if [ $OS = "ubuntu" ]; then
+			VERSION=`cat /etc/*-release | grep ^VERSION_CODENAME= | cut -d '=' -f 2`
+SOURCES="deb http://miroir.ign.fr/ubuntu/ $VERSION main restricted
+deb http://miroir.ign.fr/ubuntu/ $VERSION-updates main restricted
+deb http://miroir.ign.fr/ubuntu/ $VERSION universe
+deb http://miroir.ign.fr/ubuntu/ $VERSION-updates universe
+deb http://miroir.ign.fr/ubuntu/ $VERSION multiverse
+deb http://miroir.ign.fr/ubuntu/ $VERSION-updates multiverse
+deb http://miroir.ign.fr/ubuntu/ $VERSION-backports main restricted universe multiverse
+deb http://miroir.ign.fr/ubuntu-security/ $VERSION-security main restricted
+deb http://miroir.ign.fr/ubuntu-security/ $VERSION-security universe
+deb http://miroir.ign.fr/ubuntu-security/ $VERSION-security multiverse"
+		elif [ $OS = "debian" ]; then
+			VERSION=`cat /etc/*-release | grep ^VERSION= | cut -d '(' -f 2 | cut -d ')' -f 1`
+SOURCES="deb http://miroir.ign.fr/debian/ $VERSION main
+deb http://miroir.ign.fr/debian-security/ $VERSION/updates main"
+		fi
+		#echo "$SOURCES" | cat - /etc/apt/sources.list > temp && mv -f temp /etc/apt/sources.list
+	SHELL
+
+end

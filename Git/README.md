@@ -2,6 +2,20 @@
 
 ## SSH
 
+###### Ajouter / retirer / verifier un proxy
+```shell
+# Add
+git config --global http.proxy http://192.168.4.22:3128/
+git config --global https.proxy http://192.168.4.22:3128/
+# Remove
+git config --global --unset http.proxy
+# Check
+git config --global --get http.proxy
+```
+
+Sources:
+- [Getting git to work with a proxy server](https://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server)
+
 ###### Générer une nouvelle clé SSH (PEM format)
 ```shell
 ssh-keygen -t rsa -C "your.email@example.com" -b 4096
