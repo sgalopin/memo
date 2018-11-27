@@ -1,5 +1,11 @@
 # Debian / Ubuntu commands
 
+## Ajouter une entrée dans le fichiers hosts
+```shell
+sudo -i
+echo "192.168.50.xx xxxxxx.dev.net" >> /etc/hosts
+```
+
 ## Changer le mot de passe de l'utilisateur courant
 ```shell
 passwd
