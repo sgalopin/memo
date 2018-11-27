@@ -1,5 +1,15 @@
 # Vagrant
 
+## Plugin
+
+Workaround to install a plugin with a dependency error:
+```
+VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant plugin install vagrant-proxyconf
+```
+
+Source:
+- [Vagrant 2.0.2 fails to install plugins](https://stackoverflow.com/questions/49180469/vagrant-2-0-2-fails-to-install-plugins)
+
 ## Synced Folders
 
 ###### NFS
