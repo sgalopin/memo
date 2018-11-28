@@ -15,4 +15,5 @@ openssl req -config dev.deliciousbrains.com.conf -new -sha256 -newkey rsa:2048 \
 
 Sources:
 - [How To Set Up HTTPS Locally](https://deliciousbrains.com/https-locally-without-browser-privacy-errors/)
+- [Add Self-Signed SSL To Google Chrome on Ubuntu 16.04](https://leehblue.com/add-self-signed-ssl-google-chrome-ubuntu-16-04/)
 
