@@ -70,6 +70,7 @@ Sources:
 ###### Rattraper une erreur de config:
 
 ```shell
+git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "Sylvain Galopin" ]; then GIT_AUTHOR_NAME="sgalopin"; GIT_COMMITTER_NAME="sgalopin"; GIT_AUTHOR_EMAIL="sg@griffedartistes.com"; GIT_COMMITTER_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "sgalopin" ]; then GIT_AUTHOR_NAME="Sylvain Galopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "Sylvain Galopin" ]; then GIT_AUTHOR_EMAIL="sg@griffedartistes.com"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
 git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_NAME" = "sgalopin" ]; then GIT_COMMITTER_NAME="Sylvain Galopin"; git commit-tree "$@"; else git commit-tree "$@"; fi' HEAD
@@ -167,6 +168,12 @@ git push origin :old-name new-name
 ```
 Définir la branche comme branche par défaut si nécessaire.
 Protéger la branche si nécessaire.
+
+###### Forcer la mise à jour du wiki
+```git
+git push origin :master
+git push origin master
+```
 
 ## Divers
 ###### Migrer un dépôt SVN vers un dépôt Git
