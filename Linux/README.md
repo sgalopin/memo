@@ -1,5 +1,15 @@
 # Debian / Ubuntu commands
 
+## Grep
+```shell
+man wget | grep -nC 5 proxy
+```
+
+## Wget
+```shell
+wget "http://IP_GEOPORTAIL/CLE_IGN/geoportail/r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&STYLES=normal&LAYERS=ORTHOIMAGERY.ORTHOPHOTOS.ORTHO-EXPRESS.2016&BBOX=361440,6629220,361490,6629270&CRS=EPSG:2154&WIDTH=250&HEIGHT=250&FORMAT=image/geotiff" -O mon_image.tif  --header "Host: wxs-i.ign.fr"
+```
+
 ## Ajouter une entrée dans le fichiers hosts
 ```shell
 sudo -i
