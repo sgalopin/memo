@@ -59,7 +59,7 @@ Source:
 git config -l
 git config user.name "Sylvain Galopin"
 git config user.email "sylvain.galopin@ign.fr"
-git config user.name "Sylvain Galopin"
+git config user.name "sgalopin"
 git config user.email "sg@griffedartistes.com"
 ```
 
